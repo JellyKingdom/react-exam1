@@ -31,7 +31,7 @@ function App() {
                 </div>
             </div>
             <div> TodoList</div>
-            <div>
+            <div className="app-style">
               {
                 todos.map(function(todo){
                   return(
@@ -49,7 +49,7 @@ function App() {
 
 const Todo = ({todo}) => {
   return (
-    <div key={todo.id}>
+    <div key={todo.id} className="component-style">
       {todo.title}
     </div>
   );
