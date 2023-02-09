@@ -43,8 +43,14 @@ const Form = ({ todos, setTodos }) => {
             id: todos.length + 1,
             title,
         };
+        
+        if (title == "") {
+          alert("내용을 입력하세요!");
+        }else{
+          setTodos([...todos, newTodos]);
+        }
 
-        setTodos([...todos, newTodos]);
+        setTitle('');
     };
 
     return (
