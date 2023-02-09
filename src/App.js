@@ -49,13 +49,14 @@ const Form = ({ todos, setTodos }) => {
 
     return (
         <>
-            <div>
-                <div>
+            <div className="form">
+                <div className="insert">
                     <input value={title} onChange={titleChangeHandler} />
                     <button onClick={addButtonHandler}>추가하기</button>
                 </div>
+                <h2> TodoList</h2>
             </div>
-            <div> TodoList</div>
+            
             <div className="app-style">
                 {todos.map(function (todo) {
                     return <Todo key={todo.id} todo={todo} />;
