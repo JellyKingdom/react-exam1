@@ -39,8 +39,9 @@ const Form = ({ todos, setTodos }) => {
     };
 
     const addButtonHandler = () => {
+
         const newTodos = {
-            id: todos.length + 1,
+            id: todos.length == 0 ? 1 : todos[todos.length -1].id + 1,
             title,
         };
         
