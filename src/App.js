@@ -4,24 +4,49 @@ import { useState } from "react";
 
 function App() {
     const [todos, setTodos] = useState([
-      { id: 1, title: "react를 배워봅시다." },
-      { id: 2, title: "useState를 배워봅시다." },
+        { id: 1, title: "react를 배워봅시다." },
+        { id: 2, title: "useState를 배워봅시다." },
+    ]);
 
-  ]);
-    const [title, setTitle] = useState('');
+    return (
+        <>
+            <Layout>
+                <Form todos={todos} setTodos={setTodos}/>
+            </Layout>
+        </>
+    );
+}
+
+const Layout = (props) => {
+    return (
+        <>
+            <div className="layout">
+                <div className="header">
+                    <div>My TodoList</div>
+                    <div>한지윤</div>
+                </div>
+                <div>{props.children}</div>
+            </div>
+        </>
+    );
+};
+
+const Form = ({ todos, setTodos }) => {
+    const [title, setTitle] = useState("");
 
     const titleChangeHandler = (e) => {
         setTitle(e.target.value);
     };
 
     const addButtonHandler = () => {
-      const newTodos = {
-        id: todos.length + 1,
-        title,
-      }
+        const newTodos = {
+            id: todos.length + 1,
+            title,
+        };
 
-      setTodos([...todos,newTodos]);
+        setTodos([...todos, newTodos]);
     };
+
     return (
         <>
             <div>
@@ -32,27 +57,20 @@ function App() {
             </div>
             <div> TodoList</div>
             <div className="app-style">
-              {
-                todos.map(function(todo){
-                  return(
-                    <Todo
-                      key={todo.id}
-                      todo={todo}
-                    />
-                  )
-                })
-              }
+                {todos.map(function (todo) {
+                    return <Todo key={todo.id} todo={todo} />;
+                })}
             </div>
         </>
     );
-}
+};
 
-const Todo = ({todo}) => {
-  return (
-    <div key={todo.id} className="component-style">
-      {todo.title}
-    </div>
-  );
-}
+const Todo = ({ todo }) => {
+    return (
+        <div key={todo.id} className="component-style">
+            {todo.title}
+        </div>
+    );
+};
 
 export default App;
